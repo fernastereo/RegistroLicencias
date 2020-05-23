@@ -7,7 +7,6 @@ namespace RegistroLicencias
     {
         static void Main(string[] args)
         {
-            
             string usuario = "";
             string contrasena = "";
             string refcats = "";
@@ -116,16 +115,6 @@ namespace RegistroLicencias
             //"RESOLUCION EXPEDIDA",
             //"006609 - 004487.pdf"
 
-        }
-        private static string RutaDB()
-        {
-            string fic;
-            fic = (System.AppDomain.CurrentDomain.BaseDirectory + "\\Config.dat");            
-            string Texto;
-            System.IO.StreamReader sr = new System.IO.StreamReader(fic);
-            Texto = sr.ReadToEnd();
-            sr.Close();
-            return Texto;
         }
     }
 }
