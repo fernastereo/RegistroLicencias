@@ -7,6 +7,23 @@ namespace RegistroLicencias
     {
         static void Main(string[] args)
         {
+            
+            string usuario = "";
+            string contrasena = "";
+            string refcats = "";
+            string licencia = "";
+            string proyecto = "";
+            string modalidad_proyecto = "";
+            string m2 = "";
+            string presupuesto = "";
+            string impuesto = "";
+            string estampilla = "";
+            string vigencia = "";
+            string id_curaduria = "";
+            string matricula_inmobiliaria = "";
+            string estado = "";
+            string documento = "";
+            string ruta_documento = "";
 
             int i = 1;
             foreach (var parametro in args)
@@ -14,52 +31,52 @@ namespace RegistroLicencias
                 switch (i)
                 {
                     case 1:
-                        string usuario = parametro;
+                        usuario = parametro;
                         break;
                     case 2:
-                        string contrasena = parametro;
+                        contrasena = parametro;
                         break;
                     case 3:
-                        string refcats = parametro;
+                        refcats = parametro;
                         break;
                     case 4:
-                        string licencia = parametro;
+                        licencia = parametro;
                         break;
                     case 5:
-                        string proyecto = parametro;
+                        proyecto = parametro;
                         break;
                     case 6:
-                        string modalidad_proyecto = parametro;
+                        modalidad_proyecto = parametro;
                         break;
                     case 7:
-                        string m2 = parametro;
+                        m2 = parametro;
                         break;
                     case 8:
-                        string presupuesto = parametro;
+                        presupuesto = parametro;
                         break;
                     case 9:
-                        string impuesto = parametro;
+                        impuesto = parametro;
                         break;
                     case 10:
-                        string estampilla = parametro;
+                        estampilla = parametro;
                         break;
                     case 11:
-                        string vigencia = parametro;
+                        vigencia = parametro;
                         break;
                     case 12:
-                        string id_curaduria = parametro;
+                        id_curaduria = parametro;
                         break;
                     case 13:
-                        string matricula_inmobiliaria = parametro;
+                        matricula_inmobiliaria = parametro;
                         break;
                     case 14:
-                        string estado = parametro;
+                        estado = parametro;
                         break;
                     case 15:
-                        string documento = parametro;
+                        documento = parametro;
                         break;
                     case 16:
-                        string ruta_documento = parametro;
+                        ruta_documento = parametro;
                         break;
                     default:
                         break;
@@ -67,9 +84,22 @@ namespace RegistroLicencias
                 
                 i++;
             }
-            Console.WriteLine($"IDTabla: {idTabla}");
-            Console.WriteLine($"IDExpediente: {idExpediente}");
-            Console.WriteLine($"Abriendo BD: {rutaDB}");
+            Console.WriteLine($"usuario: {usuario}");
+            Console.WriteLine($"contrasena: {contrasena}");
+            Console.WriteLine($"refcats {refcats}");
+            Console.WriteLine($"licencia {licencia}");
+            Console.WriteLine($"proyecto {proyecto}");
+            Console.WriteLine($"modalidad_proyecto {modalidad_proyecto}");
+            Console.WriteLine($"m2 {m2}");
+            Console.WriteLine($"presupuesto {presupuesto}");
+            Console.WriteLine($"impuesto {impuesto}");
+            Console.WriteLine($"estampilla {estampilla}");
+            Console.WriteLine($"vigencia {vigencia}");
+            Console.WriteLine($"id_curaduria {id_curaduria}");
+            Console.WriteLine($"matricula_inmobiliaria {matricula_inmobiliaria}");
+            Console.WriteLine($"estado {estado}");
+            Console.WriteLine($"documento {documento}");
+            Console.WriteLine($"ruta_documento {ruta_documento}");
             //"cliente1",
             //"12345678",
             //"010500810028000",
