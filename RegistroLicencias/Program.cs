@@ -1,10 +1,24 @@
-﻿using System;
+﻿using Amazon;
+using Amazon.S3;
+using Amazon.S3.Transfer;
+using System;
 using System.Data.Odbc;
 
 namespace RegistroLicencias
 {
     class Program
-    {
+    {            
+        //Ususario: user-web-curadurias
+        //ID de Clave de Acceso: AKIAWFJEJP52LEJ6KX67
+        //Password: F7mfLbT7p9QCNJQdgtiDM2GjwueI0k93/hFzSLmt
+
+        private const string bucketName = "web-curadurias";
+        private const string awsAccessKey = "AKIAWFJEJP52LEJ6KX67";
+        private const string awsSecretKey = "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";
+        //private const string keyName = "1ca/resol/_nuevo.pdf";
+        private static readonly RegionEndpoint bucketRegion = RegionEndpoint.USWest1;
+
+
         static void Main(string[] args)
         {
             string usuario = "";
@@ -23,6 +37,7 @@ namespace RegistroLicencias
             string estado = "";
             string documento = "";
             string ruta_documento = "";
+            string keyName = "";
 
             int i = 1;
             foreach (var parametro in args)
@@ -77,12 +92,32 @@ namespace RegistroLicencias
                     case 16:
                         ruta_documento = parametro;
                         break;
+                    case 17:
+                        keyName = parametro;
+                        break;
                     default:
                         break;
                 }
-                
+
                 i++;
             }
+
+            var client = new AmazonS3Client(awsAccessKey, awsSecretKey, bucketRegion);
+
+            var uploadRequest = new TransferUtilityUploadRequest
+            {
+                FilePath = ruta_documento,
+                BucketName = bucketName,
+                Key = keyName,
+                CannedACL = S3CannedACL.PublicRead
+            };
+
+            var fileTransferUtility = new TransferUtility(client);
+            fileTransferUtility.Upload(uploadRequest);
+            Console.WriteLine("Resolución cargada en página Web ssatisfactoriamente");
+
+
+            Console.WriteLine("Envio Datos a Midas");
             Console.WriteLine($"usuario: {usuario}");
             Console.WriteLine($"contrasena: {contrasena}");
             Console.WriteLine($"refcats {refcats}");
@@ -116,5 +151,6 @@ namespace RegistroLicencias
             //"006609 - 004487.pdf"
 
         }
+
     }
 }
