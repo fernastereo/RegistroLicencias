@@ -7,15 +7,13 @@ using System.Data.Odbc;
 namespace RegistroLicencias
 {
     class Program
-    {            
-        //Ususario: user-web-curadurias
-        //ID de Clave de Acceso: AKIAWFJEJP52LEJ6KX67
-        //Password: F7mfLbT7p9QCNJQdgtiDM2GjwueI0k93/hFzSLmt
+    {
+        
 
-        private const string bucketName = "web-curadurias";
-        private const string awsAccessKey = "AKIAWFJEJP52LEJ6KX67";
-        private const string awsSecretKey = "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";
-        //private const string keyName = "1ca/resol/_nuevo.pdf";
+        private const string bucketName = "";
+        private const string awsAccessKey = ""; 
+        private const string awsSecretKey = ""; 
+        
         private static readonly RegionEndpoint bucketRegion = RegionEndpoint.USWest1;
         private static string usuario = "";
         private static string contrasena = "";
@@ -67,6 +65,7 @@ namespace RegistroLicencias
             string keyName = "";
             string midas = "";
 
+            Console.WriteLine("Subiendo archivo a web");
             int i = 1;
             foreach (var parametro in args)
             {
@@ -74,9 +73,11 @@ namespace RegistroLicencias
                 {
                     case 1:
                         ruta_documento = parametro;
+                        Console.WriteLine(ruta_documento);
                         break;
                     case 2:
                         keyName = parametro;
+                        Console.WriteLine(keyName);
                         break;
                     case 3:
                         midas = parametro;
