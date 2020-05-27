@@ -176,21 +176,6 @@ namespace RegistroLicencias
             Console.WriteLine($"matricula_inmobiliaria {matricula_inmobiliaria}");
             Console.WriteLine($"estado {estado}");
             Console.WriteLine($"documento {documento}");
-            //"cliente1",
-            //"12345678",
-            //"010500810028000",
-            //"6",
-            //"RECONOCIMIENTO DE LA EXISTENCIA DE UNA EDIFICACION",
-            //"RECONOCIMIENTO",
-            //"0",
-            //"0",
-            //"0",
-            //"0",
-            //"2020",
-            //"6609",
-            //"060 - 91349",
-            //"RESOLUCION EXPEDIDA",
-            //"006609 - 004487.pdf"
         }
     }
 }
