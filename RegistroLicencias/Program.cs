@@ -160,22 +160,22 @@ namespace RegistroLicencias
 
         static void enviarMidas()
         {
-            Console.WriteLine("Envio Datos a Midas");
-            Console.WriteLine($"usuario: {usuario}");
-            Console.WriteLine($"contrasena: {contrasena}");
-            Console.WriteLine($"refcats {refcats}");
-            Console.WriteLine($"licencia {licencia}");
-            Console.WriteLine($"proyecto {proyecto}");
-            Console.WriteLine($"modalidad_proyecto {modalidad_proyecto}");
-            Console.WriteLine($"m2 {m2}");
-            Console.WriteLine($"presupuesto {presupuesto}");
-            Console.WriteLine($"impuesto {impuesto}");
-            Console.WriteLine($"estampilla {estampilla}");
-            Console.WriteLine($"vigencia {vigencia}");
-            Console.WriteLine($"id_curaduria {id_curaduria}");
-            Console.WriteLine($"matricula_inmobiliaria {matricula_inmobiliaria}");
-            Console.WriteLine($"estado {estado}");
-            Console.WriteLine($"documento {documento}");
+            var resolucionEnviar = new Resolucion();
+            resolucionEnviar.Usuario = usuario;
+            resolucionEnviar.Contrasena = contrasena;
+            resolucionEnviar.Refcats = refcats;
+            resolucionEnviar.Licencia = licencia;
+            resolucionEnviar.Proyecto = proyecto;
+            resolucionEnviar.Modalidad_Proyecto = modalidad_proyecto;
+            resolucionEnviar.M2 = m2;
+            resolucionEnviar.Presupuesto = presupuesto;
+            resolucionEnviar.Impuesto = impuesto;
+            resolucionEnviar.Estampilla = estampilla;
+            resolucionEnviar.Vigencia = vigencia;
+            resolucionEnviar.ID_Curaduria = id_curaduria;
+            resolucionEnviar.Matricula_Inmobiliaria = matricula_inmobiliaria;
+            resolucionEnviar.Estado = estado;
+            resolucionEnviar.Documento = documento;
         }
     }
 }
