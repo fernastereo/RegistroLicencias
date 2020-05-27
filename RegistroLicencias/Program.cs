@@ -3,6 +3,7 @@ using Amazon.S3;
 using Amazon.S3.Transfer;
 using System;
 using System.Data.Odbc;
+using System.IO;
 
 namespace RegistroLicencias
 {
@@ -160,6 +161,7 @@ namespace RegistroLicencias
 
         static void enviarMidas()
         {
+            //Cargando informacion a objeto encargado de enviar la licencia
             var resolucionEnviar = new Resolucion();
             resolucionEnviar.Usuario = usuario;
             resolucionEnviar.Contrasena = contrasena;
@@ -175,7 +177,11 @@ namespace RegistroLicencias
             resolucionEnviar.ID_Curaduria = id_curaduria;
             resolucionEnviar.Matricula_Inmobiliaria = matricula_inmobiliaria;
             resolucionEnviar.Estado = estado;
-            resolucionEnviar.Documento = documento;
+            
+            //Convertir el archivo a base64            
+            Byte[] bytes = File.ReadAllBytes("ruta_documento");
+            String file = Convert.ToBase64String(bytes);
+            resolucionEnviar.Documento = file;
         }
     }
 }
