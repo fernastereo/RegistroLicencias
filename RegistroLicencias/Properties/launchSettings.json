@@ -1,7 +1,8 @@
 {
   "profiles": {
     "RegistroLicencias": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "commandLineArgs": "\"C:\\projects\\pruebamidas.pdf\" \"1ca/resol/pruebamidas.pdf\" \"1\" \"cliente1\" \"12345678\" \"010500810028000\" \"6\" \"RECONOCIMIENTO DE LA EXISTENCIA DE UNA EDIFICACION\" \"RECONOCIMIENTO\" \"320\" \"1679900\" \"89200\" \"23000\" \"2020\" \"6609\" \"060 - 91349\" \"RESOLUCION EXPEDIDA\""
     }
   }
 }

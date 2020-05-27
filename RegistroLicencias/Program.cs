@@ -4,18 +4,19 @@ using Amazon.S3.Transfer;
 using System;
 using System.Data.Odbc;
 using System.IO;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace RegistroLicencias
 {
     class Program
     {
-        
-
         private const string bucketName = "";
         private const string awsAccessKey = ""; 
         private const string awsSecretKey = ""; 
         
         private static readonly RegionEndpoint bucketRegion = RegionEndpoint.USWest1;
+        private static string ruta_documento = "";
         private static string usuario = "";
         private static string contrasena = "";
         private static string refcats = "";
@@ -62,7 +63,6 @@ namespace RegistroLicencias
         /// </param>
         static void Main(string[] args)
         {
-            string ruta_documento = "";
             string keyName = "";
             string midas = "";
 
@@ -161,6 +161,8 @@ namespace RegistroLicencias
 
         static void enviarMidas()
         {
+            //"C:\projects\pruebamidas.pdf" "1ca/resol/pruebamidas.pdf" "1" "cliente1" "12345678" "010500810028000" "6" "RECONOCIMIENTO DE LA EXISTENCIA DE UNA EDIFICACION" "RECONOCIMIENTO" "320" "1679900" "89200" "23000" "2020" "6609" "060 - 91349" "RESOLUCION EXPEDIDA"
+
             //Cargando informacion a objeto encargado de enviar la licencia
             var resolucionEnviar = new Resolucion();
             resolucionEnviar.Usuario = usuario;
@@ -177,11 +179,16 @@ namespace RegistroLicencias
             resolucionEnviar.ID_Curaduria = id_curaduria;
             resolucionEnviar.Matricula_Inmobiliaria = matricula_inmobiliaria;
             resolucionEnviar.Estado = estado;
-            
             //Convertir el archivo a base64            
-            Byte[] bytes = File.ReadAllBytes("ruta_documento");
+            Byte[] bytes = File.ReadAllBytes(ruta_documento);
             String file = Convert.ToBase64String(bytes);
             resolucionEnviar.Documento = file;
+
+            //Serializando el objeto a JSon para enviarlo
+            string jsonString;
+            jsonString = JsonSerializer.Serialize(resolucionEnviar);
+
+            Console.WriteLine(jsonString);
         }
     }
 }
