@@ -16,9 +16,9 @@ namespace RegistroLicencias
 {
     class Program
     {
-        private const string bucketName = "";
-        private const string awsAccessKey = ""; 
-        private const string awsSecretKey = ""; 
+        private static string bucketName = env.Default.BUCKETNAME;
+        private static string awsAccessKey = env.Default.AWSACCESSKEY; 
+        private static string awsSecretKey = env.Default.AWSSECRETKEY; 
         
         private static readonly RegionEndpoint bucketRegion = RegionEndpoint.USWest1;
         private static string ruta_documento = "";
@@ -168,11 +168,14 @@ namespace RegistroLicencias
         public static async Task<string> EnviarMidas()
         {
             //"C:\projects\pruebamidas.pdf" "1ca/resol/pruebamidas.pdf" "1" "cliente1" "12345678" "010500810028000" "6" "RECONOCIMIENTO DE LA EXISTENCIA DE UNA EDIFICACION" "RECONOCIMIENTO" "320" "1679900" "89200" "23000" "2020" "6609" "060 - 91349" "RESOLUCION EXPEDIDA"
+            String UriMidas = env.Default.URIMIDAS;
+                
+
             Console.WriteLine("Enviando Información a Midas");
             //Cargando informacion a objeto encargado de enviar la licencia
             var resolucionEnviar = new Resolucion();
-            resolucionEnviar.Usuario = usuario;
-            resolucionEnviar.Contrasena = contrasena;
+            resolucionEnviar.Usuario = env.Default.USUARIOMIDAS;
+            resolucionEnviar.Contrasena = env.Default.PASSWORDMIDAS;
             resolucionEnviar.Refcats = refcats;
             resolucionEnviar.Licencia = licencia;
             resolucionEnviar.Proyecto = proyecto;
@@ -199,7 +202,7 @@ namespace RegistroLicencias
             HttpClient client = new HttpClient();
             StringContent queryString = new StringContent(jsonString, Encoding.UTF8, "application/json");
 
-            HttpResponseMessage response = await client.PostAsync(new Uri("https://qmap.quspide.co/api/Curadurias/UploadData"), queryString);
+            HttpResponseMessage response = await client.PostAsync(new Uri(UriMidas), queryString);
 
             response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
             response.EnsureSuccessStatusCode();
