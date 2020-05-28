@@ -37,7 +37,7 @@ namespace RegistroLicencias {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("AKIAWFJEJP52JI6V2CRH")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string AWSACCESSKEY {
             get {
                 return ((string)(this["AWSACCESSKEY"]));
@@ -49,7 +49,7 @@ namespace RegistroLicencias {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("TX33BdDr0E1ZxHAwLJdx9WbYGbgJqB8ZhRY7gtaY")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string AWSSECRETKEY {
             get {
                 return ((string)(this["AWSSECRETKEY"]));
