@@ -340,4 +340,5 @@ ASALocalRun/
 healthchecksdb
 
 env.settings
+env.Designer.cs
 credenciales.txt
