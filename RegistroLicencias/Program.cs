@@ -4,8 +4,13 @@ using Amazon.S3.Transfer;
 using System;
 using System.Data.Odbc;
 using System.IO;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 
 namespace RegistroLicencias
 {
@@ -149,20 +154,21 @@ namespace RegistroLicencias
 
                 var fileTransferUtility = new TransferUtility(client);
                 fileTransferUtility.Upload(uploadRequest);
-                Console.WriteLine("Resolución cargada en página Web ssatisfactoriamente");
+                Console.WriteLine("Resolución cargada en página Web satisfactoriamente");
+                
 
                 if (midas == "1")
                 {
-                    enviarMidas();
+                    EnviarMidas().Wait();
                 }
 
             }
         }
 
-        static void enviarMidas()
+        public static async Task<string> EnviarMidas()
         {
             //"C:\projects\pruebamidas.pdf" "1ca/resol/pruebamidas.pdf" "1" "cliente1" "12345678" "010500810028000" "6" "RECONOCIMIENTO DE LA EXISTENCIA DE UNA EDIFICACION" "RECONOCIMIENTO" "320" "1679900" "89200" "23000" "2020" "6609" "060 - 91349" "RESOLUCION EXPEDIDA"
-
+            Console.WriteLine("Enviando Información a Midas");
             //Cargando informacion a objeto encargado de enviar la licencia
             var resolucionEnviar = new Resolucion();
             resolucionEnviar.Usuario = usuario;
@@ -188,7 +194,19 @@ namespace RegistroLicencias
             string jsonString;
             jsonString = JsonSerializer.Serialize(resolucionEnviar);
 
-            Console.WriteLine(jsonString);
+            //Enviando los datos de la licencia al endpoint
+
+            HttpClient client = new HttpClient();
+            StringContent queryString = new StringContent(jsonString, Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = await client.PostAsync(new Uri("https://qmap.quspide.co/api/Curadurias/UploadData"), queryString);
+
+            response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+            Console.WriteLine("Respuesta Midas: ");
+            Console.WriteLine(responseBody);
+            return responseBody;
         }
     }
 }
