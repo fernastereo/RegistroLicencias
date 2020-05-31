@@ -4,12 +4,11 @@ using System.Text;
 
 namespace RegistroLicencias
 {
-    class Curadurias
+    class Expediente
     {
         public int id { get; set; }
         public String Nombre { get; set; }
         public String Direccion { get; set; }
         public String Telefono { get; set; }
-
     }
 }
