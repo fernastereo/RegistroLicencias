@@ -6,21 +6,21 @@ namespace RegistroLicencias
 {
     class Resolucion
     {
-        public String Usuario { get; set; }
-        public String Contrasena { get; set; }
-        public String Refcats { get; set; }
-        public String Licencia { get; set; }
-        public String Proyecto { get; set; }
-        public String Modalidad_Proyecto { get; set; }
-        public String M2 { get; set; }
-        public String Presupuesto { get; set; }
-        public String Impuesto { get; set; }
-        public String Estampilla { get; set; }
-        public String Vigencia { get; set; }
-        public String ID_Curaduria { get; set; }
-        public String Matricula_Inmobiliaria { get; set; }
-        public String Estado { get; set; }
-        public String Documento { get; set; }
+        public String login { get; set; }
+        public String clave { get; set; }
+        public String refcats { get; set; }
+        public String licencia { get; set; }
+        public String proyecto { get; set; }
+        public String modalidad_proyecto { get; set; }
+        public String m2 { get; set; }
+        public String presupuesto { get; set; }
+        public String impuesto { get; set; }
+        public String estampilla { get; set; }
+        public String vigencia { get; set; }
+        public String id_curaduria { get; set; }
+        public String matricula_inmobiliaria { get; set; }
+        public String estado { get; set; }
+        public String documento { get; set; }
 
     }
 }

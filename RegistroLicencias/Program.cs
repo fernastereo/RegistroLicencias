@@ -16,9 +16,9 @@ namespace RegistroLicencias
 {
     class Program
     {
-        private static string bucketName = env.Default.BUCKETNAME;
-        private static string awsAccessKey = env.Default.AWSACCESSKEY; 
-        private static string awsSecretKey = env.Default.AWSSECRETKEY; 
+        private static string bucketName = "";
+        private static string awsAccessKey = ""; 
+        private static string awsSecretKey = ""; 
         
         private static readonly RegionEndpoint bucketRegion = RegionEndpoint.USWest1;
         private static string ruta_documento = "";
@@ -168,35 +168,35 @@ namespace RegistroLicencias
         public static async Task<string> EnviarMidas()
         {
             //"C:\projects\pruebamidas.pdf" "1ca/resol/pruebamidas.pdf" "1" "cliente1" "12345678" "010500810028000" "6" "RECONOCIMIENTO DE LA EXISTENCIA DE UNA EDIFICACION" "RECONOCIMIENTO" "320" "1679900" "89200" "23000" "2020" "6609" "060 - 91349" "RESOLUCION EXPEDIDA"
-            String UriMidas = env.Default.URIMIDAS;
-                
+            String UriMidas = "https://qmap.quspide.co/api/Curadurias/UploadData";
+
 
             Console.WriteLine("Enviando Información a Midas");
             //Cargando informacion a objeto encargado de enviar la licencia
             var resolucionEnviar = new Resolucion();
-            resolucionEnviar.Usuario = env.Default.USUARIOMIDAS;
-            resolucionEnviar.Contrasena = env.Default.PASSWORDMIDAS;
-            resolucionEnviar.Refcats = refcats;
-            resolucionEnviar.Licencia = licencia;
-            resolucionEnviar.Proyecto = proyecto;
-            resolucionEnviar.Modalidad_Proyecto = modalidad_proyecto;
-            resolucionEnviar.M2 = m2;
-            resolucionEnviar.Presupuesto = presupuesto;
-            resolucionEnviar.Impuesto = impuesto;
-            resolucionEnviar.Estampilla = estampilla;
-            resolucionEnviar.Vigencia = vigencia;
-            resolucionEnviar.ID_Curaduria = id_curaduria;
-            resolucionEnviar.Matricula_Inmobiliaria = matricula_inmobiliaria;
-            resolucionEnviar.Estado = estado;
+            resolucionEnviar.login = usuario;
+            resolucionEnviar.clave = contrasena;
+            resolucionEnviar.refcats = refcats;
+            resolucionEnviar.licencia = licencia;
+            resolucionEnviar.proyecto = proyecto;
+            resolucionEnviar.modalidad_proyecto = modalidad_proyecto;
+            resolucionEnviar.m2 = m2;
+            resolucionEnviar.presupuesto = presupuesto;
+            resolucionEnviar.impuesto = impuesto;
+            resolucionEnviar.estampilla = estampilla;
+            resolucionEnviar.vigencia = vigencia;
+            resolucionEnviar.id_curaduria = id_curaduria;
+            resolucionEnviar.matricula_inmobiliaria = matricula_inmobiliaria;
+            resolucionEnviar.estado = estado;
             //Convertir el archivo a base64            
             Byte[] bytes = File.ReadAllBytes(ruta_documento);
             String file = Convert.ToBase64String(bytes);
-            resolucionEnviar.Documento = file;
-
+            resolucionEnviar.documento = file;
+            
             //Serializando el objeto a JSon para enviarlo
             string jsonString;
             jsonString = JsonSerializer.Serialize(resolucionEnviar);
-
+            
             //Enviando los datos de la licencia al endpoint
 
             HttpClient client = new HttpClient();
