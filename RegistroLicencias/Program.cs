@@ -44,6 +44,7 @@ namespace RegistroLicencias
         /// <para>
         /// El módulo toma la ruta de un archivo pdf en disco y lo guarda en la carpeta resol de la 
         /// correspondiente Curaduria
+        /// Envio para todas: "C:\projects\pruebamidas.pdf" "1ca/resol/pruebamidas.pdf" "0"
         /// </para>
         /// </summary>
         /// <param name="args">Array con los datos de la resolucion
@@ -167,7 +168,7 @@ namespace RegistroLicencias
 
         public static async Task<string> EnviarMidas()
         {
-            //"C:\projects\pruebamidas.pdf" "1ca/resol/pruebamidas.pdf" "1" "cliente1" "12345678" "010500810028000" "6" "RECONOCIMIENTO DE LA EXISTENCIA DE UNA EDIFICACION" "RECONOCIMIENTO" "320" "1679900" "89200" "23000" "2020" "6609" "060 - 91349" "RESOLUCION EXPEDIDA"
+            //Envio para midas: "C:\projects\pruebamidas.pdf" "1ca/resol/pruebamidas.pdf" "1" "cliente1" "12345678" "010500810028000" "6" "RECONOCIMIENTO DE LA EXISTENCIA DE UNA EDIFICACION" "RECONOCIMIENTO" "320" "1679900" "89200" "23000" "2020" "6609" "060 - 91349" "RESOLUCION EXPEDIDA"
             String UriMidas = "https://qmap.quspide.co/api/Curadurias/UploadData";
 
 
