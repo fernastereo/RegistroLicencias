@@ -2,7 +2,7 @@
   "profiles": {
     "RegistroLicencias": {
       "commandName": "Project",
-      "commandLineArgs": "\"C:\\Users\\Fernast\\Documents\\_Compartida\\Curaduria2VA\\003.pdf\" \"2va/resol/pruebamidas.pdf\" \"0\" \"cliente1\" \"12345678\" \"010500810028000\" \"976\" \"RECONOCIMIENTO DE LA EXISTENCIA DE UNA EDIFICACION\" \"RECONOCIMIENTO\" \"320\" \"1679900\" \"89200\" \"23000\" \"2020\" \"6799\" \"060 - 91349\" \"RESOLUCION EXPEDIDA\""
+      "commandLineArgs": "\"C:\\004450-003970.pdf\" \"1ca/resol/_0_Prueba.pdf\" \"1\" \"actcuractg\" \".ActCuR2ctG11#\" \"010500810028000\" \"976\" \"RECONOCIMIENTO DE LA EXISTENCIA DE UNA EDIFICACION\" \"RECONOCIMIENTO\" \"320\" \"1679900\" \"89200\" \"23000\" \"2020\" \"5298\" \"060 - 91349\" \"RESOLUCION EXPEDIDA\""
     }
   }
 }

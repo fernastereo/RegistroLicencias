@@ -169,7 +169,7 @@ namespace RegistroLicencias
         public static async Task<string> EnviarMidas()
         {
             //Envio para midas: "C:\projects\pruebamidas.pdf" "1ca/resol/pruebamidas.pdf" "1" "cliente1" "12345678" "010500810028000" "6" "RECONOCIMIENTO DE LA EXISTENCIA DE UNA EDIFICACION" "RECONOCIMIENTO" "320" "1679900" "89200" "23000" "2020" "6609" "060 - 91349" "RESOLUCION EXPEDIDA"
-            String UriMidas = "https://qmap.quspide.co/api/Curadurias/UploadData";
+            String UriMidas = "https://midas.cartagena.gov.co/api/Curadurias/UploadData";
 
 
             Console.WriteLine("Enviando Información a Midas");
@@ -210,6 +210,23 @@ namespace RegistroLicencias
             string responseBody = await response.Content.ReadAsStringAsync();
             Console.WriteLine("Respuesta Midas: ");
             Console.WriteLine(responseBody);
+
+            string path = AppDomain.CurrentDomain.BaseDirectory + @"logRegistroLicencias_" + DateTime.Now.Day.ToString("00") + DateTime.Now.Month.ToString("00") + DateTime.Now.Year.ToString() + ".txt";
+            if (!File.Exists(path))
+            {
+                // Create a file to write to.
+                using (StreamWriter sw = File.CreateText(path))
+                {
+                    sw.WriteLine(id_curaduria + " - Respuesta Midas: " + responseBody);
+                }
+            }
+            else
+            {
+                using (StreamWriter sw = File.AppendText(path))
+                {
+                    sw.WriteLine(id_curaduria + " - Respuesta Midas: " + responseBody);
+                }
+            }
             return responseBody;
         }
     }
