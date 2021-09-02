@@ -37,6 +37,7 @@ namespace RegistroLicencias
         private static string matricula_inmobiliaria = "";
         private static string estado = "";
         private static string documento = "";
+        private static string keyName = "";
 
         /// <summary>
         /// Modulo para el cargue de resoluciones a un bucket S3 para ser consultado por las diferentes
@@ -69,7 +70,6 @@ namespace RegistroLicencias
         /// </param>
         static void Main(string[] args)
         {
-            string keyName = "";
             string midas = "";
 
             Console.WriteLine("Subiendo archivo a web");
@@ -189,6 +189,11 @@ namespace RegistroLicencias
             resolucionEnviar.id_curaduria = id_curaduria;
             resolucionEnviar.matricula_inmobiliaria = matricula_inmobiliaria;
             resolucionEnviar.estado = estado;
+            resolucionEnviar.nombre_curaduria = "CURADURIA 2";
+            if (keyName.Substring(0,3) == "1ca")
+            {
+                resolucionEnviar.nombre_curaduria = "CURADURIA 1";
+            }
             //Convertir el archivo a base64            
             Byte[] bytes = File.ReadAllBytes(ruta_documento);
             String file = Convert.ToBase64String(bytes);

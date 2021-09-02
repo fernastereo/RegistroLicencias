@@ -20,6 +20,7 @@ namespace RegistroLicencias
         public String id_curaduria { get; set; }
         public String matricula_inmobiliaria { get; set; }
         public String estado { get; set; }
+        public String nombre_curaduria { get; set; }
         public String documento { get; set; }
 
     }
